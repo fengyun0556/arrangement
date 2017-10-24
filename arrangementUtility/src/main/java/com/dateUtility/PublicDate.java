@@ -15,6 +15,15 @@ public class PublicDate implements PublicDateTimeFormattter{
 	}
 	
 	/**
+	 * @return date format : yyyy年MM月dd日
+	 * @2017年10月25日 @上午6:58:15
+	 */
+	public final static String getChineseCurrentDate() {
+		LocalDate localDate = LocalDate.now();
+		return localDate.format(CHINESE_DATE_FORMATTER);
+	}
+	
+	/**
 	 * @return time format : HH:mm:ss
 	 * @2017年10月6日 @下午4:08:16
 	 */
