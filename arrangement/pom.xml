@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.testMaven</groupId>
+		<artifactId>arrangementParent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../arrangementParent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>arrangement</artifactId>
+	<packaging>war</packaging>
+	<name>arrangement Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<build>
+		<finalName>arrangement</finalName>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.testMaven</groupId>
+			<artifactId>arrangementUtility</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.testMaven</groupId>
+			<artifactId>arrangementDB</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- 人员管理 -->
+		<dependency>
+			<groupId>com.testMaven</groupId>
+			<artifactId>arrangementPersonnelManagement</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- 需求管理 -->
+		<dependency>
+			<groupId>com.testMaven</groupId>
+			<artifactId>arrangementRequirement</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- 计划安排 -->
+		<dependency>
+			<groupId>com.testMaven</groupId>
+			<artifactId>arrangementPlan</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- 报表 -->
+		<dependency>
+			<groupId>com.testMaven</groupId>
+			<artifactId>arrangementReport</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
