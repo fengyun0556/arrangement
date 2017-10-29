@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PersonRolePrivilegeMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.PersonRolePrivilegeKey">
+    <id column="role_id" jdbcType="TINYINT" property="roleId" />
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.pojo.PersonRolePrivilegeKey">
+    delete from person_role_privilege
+    where role_id = #{roleId,jdbcType=TINYINT}
+      and privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonRolePrivilegeKey">
+    insert into person_role_privilege (role_id, privilege_id)
+    values (#{roleId,jdbcType=TINYINT}, #{privilegeId,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonRolePrivilegeKey">
+    insert into person_role_privilege
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=TINYINT},
+      </if>
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.pojo.PersonRolePrivilege">
+    <id column="role_id" jdbcType="TINYINT" property="roleId" />
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, privilege_id, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.pojo.PersonRolePrivilegeKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from person_role_privilege
+    where role_id = #{roleId,jdbcType=TINYINT}
+      and privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.pojo.PersonRolePrivilegeKey">
+    delete from person_role_privilege
+    where role_id = #{roleId,jdbcType=TINYINT}
+      and privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonRolePrivilege">
+    insert into person_role_privilege (role_id, privilege_id, name
+      )
+    values (#{roleId,jdbcType=TINYINT}, #{privilegeId,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonRolePrivilege">
+    insert into person_role_privilege
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=TINYINT},
+      </if>
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.PersonRolePrivilege">
+    update person_role_privilege
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=TINYINT}
+      and privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.PersonRolePrivilege">
+    update person_role_privilege
+    set name = #{name,jdbcType=VARCHAR}
+    where role_id = #{roleId,jdbcType=TINYINT}
+      and privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.PersonRolePrivilegeKey">
+    <id column="role_id" jdbcType="TINYINT" property="roleId" />
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.pojo.PersonRolePrivilegeKey">
+    delete from person_role_privilege
+    where role_id = #{roleId,jdbcType=TINYINT}
+      and privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonRolePrivilegeKey">
+    insert into person_role_privilege (role_id, privilege_id)
+    values (#{roleId,jdbcType=TINYINT}, #{privilegeId,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonRolePrivilegeKey">
+    insert into person_role_privilege
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=TINYINT},
+      </if>
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

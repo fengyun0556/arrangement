@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PersonPrivilegeMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilege">
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+    <result column="privilege_name" jdbcType="VARCHAR" property="privilegeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    privilege_id, privilege_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from person_privilege
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from person_privilege
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonPrivilege">
+    insert into person_privilege (privilege_id, privilege_name)
+    values (#{privilegeId,jdbcType=TINYINT}, #{privilegeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonPrivilege">
+    insert into person_privilege
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+      <if test="privilegeName != null">
+        privilege_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+      <if test="privilegeName != null">
+        #{privilegeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.PersonPrivilege">
+    update person_privilege
+    <set>
+      <if test="privilegeName != null">
+        privilege_name = #{privilegeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.PersonPrivilege">
+    update person_privilege
+    set privilege_name = #{privilegeName,jdbcType=VARCHAR}
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilege">
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+    <result column="privilege_name" jdbcType="VARCHAR" property="privilegeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    privilege_id, privilege_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from person_privilege
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from person_privilege
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonPrivilege">
+    insert into person_privilege (privilege_id, privilege_name)
+    values (#{privilegeId,jdbcType=TINYINT}, #{privilegeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonPrivilege">
+    insert into person_privilege
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+      <if test="privilegeName != null">
+        privilege_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+      <if test="privilegeName != null">
+        #{privilegeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.PersonPrivilege">
+    update person_privilege
+    <set>
+      <if test="privilegeName != null">
+        privilege_name = #{privilegeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.PersonPrivilege">
+    update person_privilege
+    set privilege_name = #{privilegeName,jdbcType=VARCHAR}
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilege">
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+    <result column="privilege_name" jdbcType="VARCHAR" property="privilegeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    privilege_id, privilege_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from person_privilege
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from person_privilege
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonPrivilege">
+    insert into person_privilege (privilege_id, privilege_name)
+    values (#{privilegeId,jdbcType=TINYINT}, #{privilegeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonPrivilege">
+    insert into person_privilege
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+      <if test="privilegeName != null">
+        privilege_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+      <if test="privilegeName != null">
+        #{privilegeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.PersonPrivilege">
+    update person_privilege
+    <set>
+      <if test="privilegeName != null">
+        privilege_name = #{privilegeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.PersonPrivilege">
+    update person_privilege
+    set privilege_name = #{privilegeName,jdbcType=VARCHAR}
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+  </update>
+</mapper>
