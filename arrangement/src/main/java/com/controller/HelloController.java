@@ -1,19 +1,18 @@
-package com.webMVC;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+package com.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
-public class HelloController implements Controller{
+@Controller
+public class HelloController {
 
 	private static final Logger logger = LogManager.getLogger(HelloController.class);
 	
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value="/hello")
+	public ModelAndView hello() {
 		logger.info("handleRequest 被调用");
 		//创建准备返回的ModelAndView对象，该对象通常包含了返回视图名、模型的名称以及模型对象
 		ModelAndView mv = new ModelAndView();
