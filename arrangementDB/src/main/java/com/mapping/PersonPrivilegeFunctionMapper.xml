@@ -33,33 +33,20 @@
       </if>
     </trim>
   </insert>
-  <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilegeFunction">
+  <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilegeFunctionKey">
     <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
     <id column="function_id" jdbcType="TINYINT" property="functionId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
-  <sql id="Base_Column_List">
-    privilege_id, function_id, name
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="com.pojo.PersonPrivilegeFunctionKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from person_privilege_function
-    where privilege_id = #{privilegeId,jdbcType=TINYINT}
-      and function_id = #{functionId,jdbcType=TINYINT}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="com.pojo.PersonPrivilegeFunctionKey">
     delete from person_privilege_function
     where privilege_id = #{privilegeId,jdbcType=TINYINT}
       and function_id = #{functionId,jdbcType=TINYINT}
   </delete>
-  <insert id="insert" parameterType="com.pojo.PersonPrivilegeFunction">
-    insert into person_privilege_function (privilege_id, function_id, name
-      )
-    values (#{privilegeId,jdbcType=TINYINT}, #{functionId,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.pojo.PersonPrivilegeFunctionKey">
+    insert into person_privilege_function (privilege_id, function_id)
+    values (#{privilegeId,jdbcType=TINYINT}, #{functionId,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.pojo.PersonPrivilegeFunction">
+  <insert id="insertSelective" parameterType="com.pojo.PersonPrivilegeFunctionKey">
     insert into person_privilege_function
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="privilegeId != null">
@@ -67,9 +54,6 @@
       </if>
       <if test="functionId != null">
         function_id,
-      </if>
-      <if test="name != null">
-        name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -79,27 +63,40 @@
       <if test="functionId != null">
         #{functionId,jdbcType=TINYINT},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilegeFunctionKey">
+    <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
+    <id column="function_id" jdbcType="TINYINT" property="functionId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.pojo.PersonPrivilegeFunctionKey">
+    delete from person_privilege_function
+    where privilege_id = #{privilegeId,jdbcType=TINYINT}
+      and function_id = #{functionId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.PersonPrivilegeFunctionKey">
+    insert into person_privilege_function (privilege_id, function_id)
+    values (#{privilegeId,jdbcType=TINYINT}, #{functionId,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.PersonPrivilegeFunctionKey">
+    insert into person_privilege_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        privilege_id,
+      </if>
+      <if test="functionId != null">
+        function_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="privilegeId != null">
+        #{privilegeId,jdbcType=TINYINT},
+      </if>
+      <if test="functionId != null">
+        #{functionId,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.PersonPrivilegeFunction">
-    update person_privilege_function
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where privilege_id = #{privilegeId,jdbcType=TINYINT}
-      and function_id = #{functionId,jdbcType=TINYINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.pojo.PersonPrivilegeFunction">
-    update person_privilege_function
-    set name = #{name,jdbcType=VARCHAR}
-    where privilege_id = #{privilegeId,jdbcType=TINYINT}
-      and function_id = #{functionId,jdbcType=TINYINT}
-  </update>
   <resultMap id="BaseResultMap" type="com.pojo.PersonPrivilegeFunctionKey">
     <id column="privilege_id" jdbcType="TINYINT" property="privilegeId" />
     <id column="function_id" jdbcType="TINYINT" property="functionId" />
