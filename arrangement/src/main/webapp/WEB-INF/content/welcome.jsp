@@ -10,5 +10,16 @@
 message:<br>
 <hr>
 ${requestScope.message}
+<br>
+<form action="hello" method="post">
+	method:post
+	<input type="submit" value="submit"/>
+</form>
+<br>
+<form action="hello" method="get">
+	method:get
+	<input type="submit" value="submit"/>
+</form>
+method:${requestScope.method}
 </body>
 </html>

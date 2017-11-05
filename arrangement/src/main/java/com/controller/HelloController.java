@@ -3,24 +3,28 @@ package com.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HelloController {
 
 	private static final Logger logger = LogManager.getLogger(HelloController.class);
 	
-	@RequestMapping(value="/hello")
-	public ModelAndView hello() {
-		logger.info("handleRequest 被调用");
-		//创建准备返回的ModelAndView对象，该对象通常包含了返回视图名、模型的名称以及模型对象
-		ModelAndView mv = new ModelAndView();
-		//添加模型数据，可以是任意的pojo对象
-		mv.addObject("message", "hello world");
-		//设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
-		mv.setViewName("/WEB-INF/content/welcome.jsp");
-		return mv;
+	@RequestMapping(value="/hello", method=RequestMethod.GET)
+	public String hello1(Model model) {
+		logger.info("handleRequest hello1 被调用");
+		model.addAttribute("message", "hello world");
+		model.addAttribute("method", "get");
+		return "welcome";
 	}
 
+	@RequestMapping(value="/hello", method=RequestMethod.POST)
+	public String hello2(Model model) {
+		logger.info("handleRequest hello2 被调用");
+		model.addAttribute("message", "hello world");
+		model.addAttribute("method", "post");
+		return "welcome";
+	}
 }
