@@ -7,19 +7,6 @@
 <title>welcome</title>
 </head>
 <body>
-message:<br>
-<hr>
-${requestScope.message}
-<br>
-<form action="hello" method="post">
-	method:post
-	<input type="submit" value="submit"/>
-</form>
-<br>
-<form action="hello" method="get">
-	method:get
-	<input type="submit" value="submit"/>
-</form>
-method:${requestScope.method}
+<h3>欢迎【${requestScope.user.userName}】登陆</h3>
 </body>
 </html>
