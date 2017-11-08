@@ -12,10 +12,6 @@
        
     <!-- spring可以自动扫描base-pack下面的包或者子包下面的java文件，如果扫描到有Spring的相关注解的类，则把这些类注册为Spring的bean -->
 	<context:component-scan base-package="com.controller"></context:component-scan>
-	<!-- 配置annotation类型的处理映射器 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean> -->
-	<!-- 配置annotation类型的处理器适配器 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean> -->
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/content/"></property>
