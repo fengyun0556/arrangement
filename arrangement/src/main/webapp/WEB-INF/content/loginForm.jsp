@@ -8,6 +8,7 @@
 </head>
 <body>
 <form action="login" method="post">
+	<h3>@SessionAttributes</h3>
 	<table>
 		<tr>
 			<td><label>登录名：</label></td>
