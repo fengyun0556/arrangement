@@ -7,13 +7,19 @@ public class PersonUser implements Serializable {
 
     private String loginName;
 
+    private String userPassword;
+
     private String userName;
+
+    private String sex;
 
     private String email;
 
-    private String mobilephone;
+    private String mobilePhone;
 
-    private String userPassword;
+    private Byte departmentId;
+
+    private Byte employeeTypeId;
 
     private static final long serialVersionUID = 1L;
 
@@ -33,12 +39,28 @@ public class PersonUser implements Serializable {
         this.loginName = loginName == null ? null : loginName.trim();
     }
 
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword == null ? null : userPassword.trim();
+    }
+
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public String getEmail() {
@@ -49,20 +71,28 @@ public class PersonUser implements Serializable {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getMobilephone() {
-        return mobilephone;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setMobilephone(String mobilephone) {
-        this.mobilephone = mobilephone == null ? null : mobilephone.trim();
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone == null ? null : mobilePhone.trim();
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public Byte getDepartmentId() {
+        return departmentId;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
+    public void setDepartmentId(Byte departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Byte getEmployeeTypeId() {
+        return employeeTypeId;
+    }
+
+    public void setEmployeeTypeId(Byte employeeTypeId) {
+        this.employeeTypeId = employeeTypeId;
     }
 
     @Override
@@ -79,10 +109,13 @@ public class PersonUser implements Serializable {
         PersonUser other = (PersonUser) that;
         return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
             && (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
+            && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
+            && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
             && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
-            && (this.getMobilephone() == null ? other.getMobilephone() == null : this.getMobilephone().equals(other.getMobilephone()))
-            && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()));
+            && (this.getMobilePhone() == null ? other.getMobilePhone() == null : this.getMobilePhone().equals(other.getMobilePhone()))
+            && (this.getDepartmentId() == null ? other.getDepartmentId() == null : this.getDepartmentId().equals(other.getDepartmentId()))
+            && (this.getEmployeeTypeId() == null ? other.getEmployeeTypeId() == null : this.getEmployeeTypeId().equals(other.getEmployeeTypeId()));
     }
 
     @Override
@@ -91,10 +124,13 @@ public class PersonUser implements Serializable {
         int result = 1;
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         result = prime * result + ((getLoginName() == null) ? 0 : getLoginName().hashCode());
-        result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
-        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
-        result = prime * result + ((getMobilephone() == null) ? 0 : getMobilephone().hashCode());
         result = prime * result + ((getUserPassword() == null) ? 0 : getUserPassword().hashCode());
+        result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
+        result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
+        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getMobilePhone() == null) ? 0 : getMobilePhone().hashCode());
+        result = prime * result + ((getDepartmentId() == null) ? 0 : getDepartmentId().hashCode());
+        result = prime * result + ((getEmployeeTypeId() == null) ? 0 : getEmployeeTypeId().hashCode());
         return result;
     }
 
@@ -106,10 +142,13 @@ public class PersonUser implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", userId=").append(userId);
         sb.append(", loginName=").append(loginName);
-        sb.append(", userName=").append(userName);
-        sb.append(", email=").append(email);
-        sb.append(", mobilephone=").append(mobilephone);
         sb.append(", userPassword=").append(userPassword);
+        sb.append(", userName=").append(userName);
+        sb.append(", sex=").append(sex);
+        sb.append(", email=").append(email);
+        sb.append(", mobilePhone=").append(mobilePhone);
+        sb.append(", departmentId=").append(departmentId);
+        sb.append(", employeeTypeId=").append(employeeTypeId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

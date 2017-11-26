@@ -8,5 +8,6 @@
 </head>
 <body>
 <h3>欢迎【${requestScope.user.userName}】登陆</h3>
+<h3>欢迎【${sessionScope.user.userName}】登陆</h3>
 </body>
 </html>
