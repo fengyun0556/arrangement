@@ -12,6 +12,27 @@
        
     <!-- spring可以自动扫描base-pack下面的包或者子包下面的java文件，如果扫描到有Spring的相关注解的类，则把这些类注册为Spring的bean -->
 	<context:component-scan base-package="com.controller"></context:component-scan>
+	<!-- <mvc:default-servlet-handler/> -->
+	<!-- 设置配置方案 -->
+	<mvc:annotation-driven>
+		<!-- 设置不使用默认的消息转换器 -->
+		<mvc:message-converters register-defaults="false">
+			<!-- 配置Spring的转换器 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+			<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"></bean>
+			<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+			<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"></bean>
+			<!-- 配置fastjson中实现HttpMessageConverter接口的转换器 -->
+			<bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/content/"></property>
