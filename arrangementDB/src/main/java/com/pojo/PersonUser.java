@@ -1,6 +1,7 @@
 package com.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PersonUser implements Serializable {
     private Integer userId;
@@ -12,6 +13,8 @@ public class PersonUser implements Serializable {
     private String userName;
 
     private String sex;
+
+    private Date birthday;
 
     private String email;
 
@@ -63,6 +66,14 @@ public class PersonUser implements Serializable {
         this.sex = sex == null ? null : sex.trim();
     }
 
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -112,6 +123,7 @@ public class PersonUser implements Serializable {
             && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
             && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
+            && (this.getBirthday() == null ? other.getBirthday() == null : this.getBirthday().equals(other.getBirthday()))
             && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
             && (this.getMobilePhone() == null ? other.getMobilePhone() == null : this.getMobilePhone().equals(other.getMobilePhone()))
             && (this.getDepartmentId() == null ? other.getDepartmentId() == null : this.getDepartmentId().equals(other.getDepartmentId()))
@@ -127,6 +139,7 @@ public class PersonUser implements Serializable {
         result = prime * result + ((getUserPassword() == null) ? 0 : getUserPassword().hashCode());
         result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
         result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
+        result = prime * result + ((getBirthday() == null) ? 0 : getBirthday().hashCode());
         result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
         result = prime * result + ((getMobilePhone() == null) ? 0 : getMobilePhone().hashCode());
         result = prime * result + ((getDepartmentId() == null) ? 0 : getDepartmentId().hashCode());
@@ -145,6 +158,7 @@ public class PersonUser implements Serializable {
         sb.append(", userPassword=").append(userPassword);
         sb.append(", userName=").append(userName);
         sb.append(", sex=").append(sex);
+        sb.append(", birthday=").append(birthday);
         sb.append(", email=").append(email);
         sb.append(", mobilePhone=").append(mobilePhone);
         sb.append(", departmentId=").append(departmentId);

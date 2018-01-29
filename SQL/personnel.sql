@@ -5,15 +5,15 @@ role 角色*/
 drop table if exists person_user;
 create table person_user(
     user_id		int auto_increment primary key,
-    login_name  VARCHAR(40) comment "登录名称/昵称",
+    login_name  VARCHAR(40) unique comment "登录名称/昵称",
     user_password   varchar(60) comment "用户密码",
     user_name	varchar(40) comment "用户名",
     sex			char(1) comment "性别",
+    birthday	date comment "生日",
     eMail		VARCHAR(40) comment "邮箱",
     mobile_phone	VARCHAR(20) comment "手机号码",
     department_id   tinyint unsigned comment "部门编号",
     employee_type_id tinyint unsigned comment "员工类型编码"
-
 );
 
 /*

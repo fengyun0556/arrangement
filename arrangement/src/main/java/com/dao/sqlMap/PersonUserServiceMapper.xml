@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PersonUserServiceDao">
+  <resultMap id="BaseResultMap" type="com.pojo.PersonUser">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="eMail" jdbcType="VARCHAR" property="email" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="department_id" jdbcType="TINYINT" property="departmentId" />
+    <result column="employee_type_id" jdbcType="TINYINT" property="employeeTypeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, login_name, user_password, user_name, sex, birthday, eMail, mobile_phone, 
+    department_id, employee_type_id
+  </sql>
+  <select id="selectByLogin" parameterType="com.pojo.PersonUser" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from person_user
+    where user_password=#{loginName,jdbcType=VARCHAR} and login_name=#{userPassword,jdbcType=VARCHAR}
+  </select>
+</mapper>

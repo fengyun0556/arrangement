@@ -3,11 +3,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登录成功</title>
+<title>首页</title>
 </head>
 <body>
-${sessionScope.personUser.loginName}登陆成功！<br>
-<input type="button" value="完善账号" onclick="location.href='${pageContext.request.contextPath}/person/registerPerfect/${sessionScope.personUser.userId}'"></input>
+${sessionScope.personUser.userId}<br>
+${sessionScope.personUser.loginName}，欢迎您！<br/>
+<input type="button" value="完善账号" onclick="location.href='${pageContext.request.contextPath}/person/registerPerfect/${sessionScope.personUser.userId}'"></input><br>
 <a href="${pageContext.request.contextPath}/person/logout" >注销</a>
 </body>
 </html>

@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
@@ -11,15 +12,14 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
        
     <!-- spring可以自动扫描base-pack下面的包或者子包下面的java文件，如果扫描到有Spring的相关注解的类，则把这些类注册为Spring的bean -->
-	<context:component-scan base-package="com.controller"></context:component-scan>
-	<!-- <mvc:default-servlet-handler/> -->
+	<context:component-scan base-package="com.controller"/>
+	
 	<!-- 设置配置方案 -->
-	<mvc:annotation-driven>
+	<mvc:annotation-driven enable-matrix-variables="true">
 		<!-- 设置不使用默认的消息转换器 -->
 		<mvc:message-converters register-defaults="false">
 			<!-- 配置Spring的转换器 -->
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
-			<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"></bean>
 			<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
 			<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"></bean>
 			<!-- 配置fastjson中实现HttpMessageConverter接口的转换器 -->
@@ -33,9 +33,28 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+	
+	<!-- 拦截器定义 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/" />
+			<bean class="com.intercept.AuthorizationInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/content/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- enctype="multipart/form-data"  配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="UTF-8" />
+        <!-- 文件大小最大值 -->
+        <property name="maxUploadSize" value="10485760000" />
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="40960" />
+    </bean>
 </beans>

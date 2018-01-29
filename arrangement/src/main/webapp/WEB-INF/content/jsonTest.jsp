@@ -11,26 +11,6 @@
 	   testRequestObject();
 	});
 	
-	/* function testRequestBody(){
-		$.ajax({
-				url:"${pageContext.request.contextPath}/json/testRequestBody",
-				dataType:"json",
-				type:"post",
-				contentType : "application/json;charset=UTF-8",
-				//data:JSON.stringify({userId : 1, loginName : "admin"}),
-				async:true,
-				success:function(data){
-					$("#userId").html(data.userId);
-					$("#loginName").html(data.loginName);
-					$("#userName").html(data.userName);
-					console.log(data);
-				},
-				error:function(){
-					alert("数据发送失败");
-				}
-			});
-	} */
-	
 	function testRequestObject(){
 		$.ajax({
 			url:"${pageContext.request.contextPath}/json/testRequestObject",

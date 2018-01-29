@@ -3,85 +3,98 @@ package com.controller.person;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.DataBinder;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.baseInfoUtility.PublicPersonelInfo;
+import com.classUtility.TransferField;
+import com.dto.person.RegisterPerfectDTO;
 import com.pojo.PersonUser;
+import com.service.PersonUserService;
 
 @Controller
 @RequestMapping(value = "/person")
+@SessionAttributes("personUser")
 public class RegisterController {
 
 	public static final Logger LOGGER = LogManager.getLogger(RegisterController.class);
 
+	@Resource
+	private PublicPersonelInfo publicPersonelInfo;
+	
+	@Resource
+	private PersonUserService personUserService;
+	
 	/**
 	 * 跳转至注册页面
 	 * 
-	 * @2017年11月26日 @下午3:11:09
+	 * @since 2017年11月26日 下午3:11:09
 	 */
 	@RequestMapping(value = "registerInit")
 	public String registerInit(Model model) {
 		PersonUser personUser = new PersonUser();
-		this.prepareViewData(model, personUser);
+		model.addAttribute("personUser", personUser);
 		return "person/registerInit";
 	}
 
-	@InitBinder
-	public void initBinder(DataBinder binder) {
-		binder.setValidator(new RegisterValidator());
-	}
-	
 	/**
 	 * 提交注册
 	 * 
-	 * @2017年11月26日 @下午4:22:03
+	 * @since 2017年11月26日 下午4:22:03
 	 */
 	@RequestMapping(value = "/register")
-	public String register(@Validated PersonUser personUser, Errors errors, Model model) {
+	public String register(@Valid @ModelAttribute PersonUser personUser, Errors errors, Model model) {
 		LOGGER.info(personUser);
-		if (errors.hasFieldErrors()) {
-			this.prepareViewData(model, personUser);
-			return "person/registerInit";
-		} else {
-			model.addAttribute("personUser", personUser);
-			return "person/success";
+		if(!errors.hasFieldErrors()) {
+			//入参无误，将注册信息插入数据库
+			if(personUserService.insertUser(personUser)) {
+				model.addAttribute("personUser", personUser);
+				return "person/success";
+			}
 		}
+		
+		//入参有误或插入数据库失败，返回注册初始化页面
+		return "person/registerInit";
 	}
+	
+	/**
+	 * 已注册过的账号，完善账号信息
+	 * @author yangzf
+	 * @since 2018年1月28日 下午9:09:08
+	 */
+	@RequestMapping(value = "registerPerfect/{userId}")
+	public String registerPerfectInit(Model model, @PathVariable Integer userId) {
+		PersonUser personUser = personUserService.getPersonUserByUserId(userId);
+		
+		RegisterPerfectDTO registerPerfectDTO = new RegisterPerfectDTO();
+		TransferField transferField = TransferField.getTransferFieldInstance();
+		transferField.transferFields(registerPerfectDTO, personUser);
+		model.addAttribute("registerPerfectDTO", registerPerfectDTO);
+		
+		this.prepareViewData(model);
+		return "person/registerPerfect";
+	}
+	
 	
 	/**
 	 * 准备页面显示的基础数据
 	 * @param model
-	 * @param personUser
-	 * @2017年11月26日 @下午9:20:18
+	 * @since 2017年11月26日 下午9:20:18
 	 */
-	private void prepareViewData(Model model, PersonUser personUser) {
-		model.addAttribute("sexMap", this.getSexMap());
-		model.addAttribute("employeeTypeMap", this.getEmployeeTypeMap());
+	private void prepareViewData(Model model) {
+		model.addAttribute("sexMap", publicPersonelInfo.getSexMap());
+		model.addAttribute("employeeTypeMap", publicPersonelInfo.getEmployeeTypeMap());
 		model.addAttribute("departmentMap", this.getDepartmentMap());
-		model.addAttribute("personUser", personUser);
-	}
-	
-	private Map<Integer, String> getSexMap(){
-		Map<Integer, String> sexMap = new HashMap<Integer, String>();
-		sexMap.put(0, "男");
-		sexMap.put(1, "女");
-		sexMap.put(2, "保密");
-		return sexMap;
-	}
-	
-	private Map<Integer, String> getEmployeeTypeMap(){
-		Map<Integer, String> employeeTypeMap = new HashMap<Integer, String>();
-		employeeTypeMap.put(1, "正式员工");
-		employeeTypeMap.put(2, "实习员工");
-		employeeTypeMap.put(3, "临时员工");
-		return employeeTypeMap;
 	}
 	
 	private Map<String, String> getDepartmentMap(){
@@ -93,7 +106,5 @@ public class RegisterController {
 		departmentMap.put("005", "BI组");
 		return departmentMap;
 	}
-	
-	
 	
 }

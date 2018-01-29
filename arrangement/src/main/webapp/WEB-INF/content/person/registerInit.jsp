@@ -8,12 +8,12 @@
 <title>注册</title>
 </head>
 <body>
-<form:form modelAttribute="personUser" action="${pageContext.request.contextPath}/person/register">
-	<table>
+<form:form modelAttribute="personUser" method="post" action="${pageContext.request.contextPath}/person/register">
+	<table align="center">
 		<tr>
 			<td>登录名称/昵称：</td>
 			<td><form:input path="loginName"/></td>
-			<td><font color="red"><form:errors path="loginName"></form:errors></font></td>
+			<td><font color="red"><form:errors path="loginName"/></font></td>
 		</tr>
 		<tr>
 			<td>请输入用户密码：</td>
@@ -22,41 +22,14 @@
 		</tr>
 		<tr>
 			<td>请重新输入用户密码：</td>
-			<td><form:password path="userPassword" id="rePassword" /></td>
+			<td><form:password path="" id="rePassword" /></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>用户姓名：</td>
-			<td><form:input path="userName"/></td>
-			<td><font color="red"><form:errors path="userName"/></font></td>
-		</tr>
-		<tr>
-			<td>性别：</td>
-			<td><form:radiobuttons path="sex" items="${sexMap}"/></td>
-			<td><font color="red"><form:errors path="sex"/></font></td>
-		</tr>
-		<tr>
-			<td>邮箱：</td>
-			<td><form:input path="email"/></td>
-			<td><font color="red"><form:errors path="email"/></font></td>
-		</tr>
-		<tr>
-			<td>手机号码：</td>
-			<td><form:input path="mobilePhone"/></td>
-			<td><font color="red"><form:errors path="mobilePhone"/></font></td>
-		</tr>
-		<tr>
-			<td>部门：</td>
-			<td><form:checkboxes items="${departmentMap}" path="departmentId"/></td>
-			<td><font color="red"><form:errors path="departmentId"/></font></td>
-		</tr>
-		<tr>
-			<td>员工类型：</td>
-			<td><form:select path="employeeTypeId" items="${employeeTypeMap}"/></td>
-			<td><font color="red"><form:errors path="employeeTypeId"/></font></td>
-		</tr>
-		<tr>
-			<td colspan="3"><input type="submit" value="提交" /></td>
+			<td colspan="3" align="center">
+				<input type="submit" value="提交" />
+				<input type="button" value="已有账号，直接登录" onclick="location.href='${pageContext.request.contextPath}/person/loginForm'"/>
+			</td>
 		</tr>
 	</table>
 </form:form>
