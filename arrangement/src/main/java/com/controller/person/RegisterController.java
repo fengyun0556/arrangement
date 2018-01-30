@@ -54,7 +54,6 @@ public class RegisterController {
 	 */
 	@RequestMapping(value = "/register")
 	public String register(@Valid @ModelAttribute PersonUser personUser, Errors errors, Model model) {
-		LOGGER.info(personUser);
 		if(!errors.hasFieldErrors()) {
 			//入参无误，将注册信息插入数据库
 			if(personUserService.insertUser(personUser)) {
@@ -62,7 +61,6 @@ public class RegisterController {
 				return "person/success";
 			}
 		}
-		
 		//入参有误或插入数据库失败，返回注册初始化页面
 		return "person/registerInit";
 	}
@@ -72,9 +70,9 @@ public class RegisterController {
 	 * @author yangzf
 	 * @since 2018年1月28日 下午9:09:08
 	 */
-	@RequestMapping(value = "registerPerfect/{userId}")
-	public String registerPerfectInit(Model model, @PathVariable Integer userId) {
-		PersonUser personUser = personUserService.getPersonUserByUserId(userId);
+	@RequestMapping(value = "registerPerfect/{loginName}")
+	public String registerPerfectInit(Model model, @PathVariable String loginName) {
+		PersonUser personUser = personUserService.getPersonUserByUserId(loginName);
 		
 		RegisterPerfectDTO registerPerfectDTO = new RegisterPerfectDTO();
 		TransferField transferField = TransferField.getTransferFieldInstance();
@@ -85,6 +83,26 @@ public class RegisterController {
 		return "person/registerPerfect";
 	}
 	
+	/**
+	 * 提交完善账户资料的请求
+	 * @author yangzf
+	 * @since 2018年1月29日 下午10:20:48
+	 */
+	@RequestMapping(value = "registerPerfectCommit")
+	public String registerPerfectCommit(@ModelAttribute @Valid RegisterPerfectDTO registerPerfectDTO, 
+			Errors errors, Model model) {
+		if(!errors.hasFieldErrors()) {
+			TransferField transferField = TransferField.getTransferFieldInstance();
+			PersonUser personUser = new PersonUser();
+			transferField.transferFields(personUser, registerPerfectDTO);
+			if(personUserService.updatePersonUser(personUser)) {
+				return "person/success";
+			}
+		}
+		this.prepareViewData(model);
+		model.addAttribute("registerPerfectDTO", registerPerfectDTO);
+		return "person/registerPerfect";
+	}
 	
 	/**
 	 * 准备页面显示的基础数据

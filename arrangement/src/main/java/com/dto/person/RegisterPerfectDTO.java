@@ -19,9 +19,6 @@ public class RegisterPerfectDTO {
 	@NotBlank(message="登录名不可为空！")
     private String loginName;
 
-    @NotBlank(message="密码不可为空！")
-    private String userPassword;
-
     @NotBlank(message="用户姓名不可为空！")
     private String userName;
 
@@ -47,14 +44,6 @@ public class RegisterPerfectDTO {
 
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
-	}
-
-	public String getUserPassword() {
-		return userPassword;
-	}
-
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
 	}
 
 	public String getUserName() {

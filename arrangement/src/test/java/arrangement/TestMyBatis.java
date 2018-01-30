@@ -23,9 +23,9 @@ public class TestMyBatis {
 
 	@Test
 	public void test1() {
-		PersonUser user = personUserServiceImpl.getPersonUserByUserId(1);
+		PersonUser user = personUserServiceImpl.getPersonUserByUserId("admin");
 		LOGGER.info(user);
-		PersonUser user2 = personUserServiceImpl.getPersonUserByUserId(1);
+		PersonUser user2 = personUserServiceImpl.getPersonUserByUserId("admin");
 		LOGGER.info(user2);
 
 	}
