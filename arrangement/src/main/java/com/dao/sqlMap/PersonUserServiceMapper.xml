@@ -14,8 +14,7 @@
     <result column="employee_type_id" jdbcType="TINYINT" property="employeeTypeId" />
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, login_name, user_password, user_name, sex, birthday, eMail, mobile_phone, 
-    department_id, employee_type_id
+    login_name, user_password, user_name, sex, birthday, eMail, mobile_phone, department_id, employee_type_id
   </sql>
   <select id="selectByLogin" parameterType="com.pojo.PersonUser" resultMap="BaseResultMap">
     select 

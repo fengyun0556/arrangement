@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.LogMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.Log">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="operateMessage" jdbcType="VARCHAR" property="operatemessage" />
+    <result column="operateDate" jdbcType="TIMESTAMP" property="operatedate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, login_name, operateMessage, operateDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Log">
+    insert into log (id, login_name, operateMessage, 
+      operateDate)
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{operatemessage,jdbcType=VARCHAR}, 
+      #{operatedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Log">
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="operatemessage != null">
+        operateMessage,
+      </if>
+      <if test="operatedate != null">
+        operateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatemessage != null">
+        #{operatemessage,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        #{operatedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Log">
+    update log
+    <set>
+      <if test="loginName != null">
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatemessage != null">
+        operateMessage = #{operatemessage,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        operateDate = #{operatedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Log">
+    update log
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      operateMessage = #{operatemessage,jdbcType=VARCHAR},
+      operateDate = #{operatedate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

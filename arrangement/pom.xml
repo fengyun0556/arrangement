@@ -200,29 +200,5 @@
 			<artifactId>arrangementDB</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<!-- 人员管理 -->
-		<dependency>
-			<groupId>com.testMaven</groupId>
-			<artifactId>arrangementPersonnelManagement</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<!-- 需求管理 -->
-		<dependency>
-			<groupId>com.testMaven</groupId>
-			<artifactId>arrangementRequirement</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<!-- 计划安排 -->
-		<dependency>
-			<groupId>com.testMaven</groupId>
-			<artifactId>arrangementPlan</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<!-- 报表 -->
-		<dependency>
-			<groupId>com.testMaven</groupId>
-			<artifactId>arrangementReport</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 </project>

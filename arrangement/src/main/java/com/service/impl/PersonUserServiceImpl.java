@@ -24,13 +24,18 @@ public class PersonUserServiceImpl implements PersonUserService {
 	}
 
 	@Override
-	public PersonUser getPersonUserByUserId(Integer userId) {
-		return personUserMapper.selectByPrimaryKey(userId);
+	public PersonUser getPersonUserByUserId(String loginName) {
+		return personUserMapper.selectByPrimaryKey(loginName);
 	}
 
 	@Override
 	public PersonUser selectByLogin(PersonUser personUser) {
 		return personUserServiceDao.selectByLogin(personUser);
+	}
+
+	@Override
+	public boolean updatePersonUser(PersonUser personUser) {
+		return personUserMapper.updateByPrimaryKeySelective(personUser) > 0 ? true : false;
 	}
 
 }

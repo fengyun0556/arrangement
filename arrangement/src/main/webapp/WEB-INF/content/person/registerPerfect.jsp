@@ -8,7 +8,7 @@
 </head>
 <body>
 <form:form modelAttribute="registerPerfectDTO" enctype="multipart/form-data" method="post" 
-	action="${pageContext.request.contextPath}/person/register">
+	action="${pageContext.request.contextPath}/person/registerPerfectCommit">
 	<table align="center">
 		<tr>
 			<td>登录名称/昵称：</td>

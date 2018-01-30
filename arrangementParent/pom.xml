@@ -21,10 +21,6 @@
 		<module>../arrangementDB</module>
 		<module>../arrangementUtility</module>
 		<module>../arrangement</module>
-		<module>../arrangementPersonnelManagement</module>
-		<module>../arrangementRequirement</module>
-		<module>../arrangementPlan</module>
-		<module>../arrangementReport</module>
 	</modules>
 
 	<properties>

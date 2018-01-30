@@ -7,7 +7,7 @@
 </head>
 <body>
 ${sessionScope.personUser.loginName}登陆成功！<br>
-<input type="button" value="完善账号" onclick="location.href='${pageContext.request.contextPath}/person/registerPerfect/${sessionScope.personUser.userId}'"></input>
+<input type="button" value="完善账号" onclick="location.href='${pageContext.request.contextPath}/person/registerPerfect/${sessionScope.personUser.loginName}'"></input>
 <a href="${pageContext.request.contextPath}/person/logout" >注销</a>
 </body>
 </html>

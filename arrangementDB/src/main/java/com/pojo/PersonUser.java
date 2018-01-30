@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class PersonUser implements Serializable {
-    private Integer userId;
-
     private String loginName;
 
     private String userPassword;
@@ -25,14 +23,6 @@ public class PersonUser implements Serializable {
     private Byte employeeTypeId;
 
     private static final long serialVersionUID = 1L;
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getLoginName() {
         return loginName;
@@ -118,8 +108,7 @@ public class PersonUser implements Serializable {
             return false;
         }
         PersonUser other = (PersonUser) that;
-        return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
+        return (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
             && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
             && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
@@ -134,7 +123,6 @@ public class PersonUser implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         result = prime * result + ((getLoginName() == null) ? 0 : getLoginName().hashCode());
         result = prime * result + ((getUserPassword() == null) ? 0 : getUserPassword().hashCode());
         result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
@@ -153,7 +141,6 @@ public class PersonUser implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", userId=").append(userId);
         sb.append(", loginName=").append(loginName);
         sb.append(", userPassword=").append(userPassword);
         sb.append(", userName=").append(userName);
