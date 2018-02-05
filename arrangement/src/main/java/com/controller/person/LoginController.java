@@ -28,7 +28,7 @@ import com.service.PersonUserService;
 @SessionAttributes("personUser")
 public class LoginController {
 
-	public static final Logger LOGGER = LogManager.getLogger(RegisterController.class);
+	public static final Logger LOGGER = LogManager.getLogger(LoginController.class);
 
 	@Resource
 	private PersonUserService personUserService;
