@@ -6,9 +6,8 @@
 <title>首页</title>
 </head>
 <body>
-${sessionScope.personUser.userId}<br>
 ${sessionScope.personUser.loginName}，欢迎您！<br/>
-<input type="button" value="完善账号" onclick="location.href='${pageContext.request.contextPath}/person/registerPerfect/${sessionScope.personUser.userId}'"></input><br>
+<input type="button" value="完善账号" onclick="location.href='${pageContext.request.contextPath}/person/registerPerfect/${sessionScope.personUser.loginName}'"></input><br>
 <a href="${pageContext.request.contextPath}/person/logout" >注销</a>
 </body>
 </html>

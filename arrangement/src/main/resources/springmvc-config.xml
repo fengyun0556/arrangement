@@ -14,6 +14,8 @@
     <!-- spring可以自动扫描base-pack下面的包或者子包下面的java文件，如果扫描到有Spring的相关注解的类，则把这些类注册为Spring的bean -->
 	<context:component-scan base-package="com.controller"/>
 	
+	<aop:aspectj-autoproxy/>
+	
 	<!-- 设置配置方案 -->
 	<mvc:annotation-driven enable-matrix-variables="true">
 		<!-- 设置不使用默认的消息转换器 -->
