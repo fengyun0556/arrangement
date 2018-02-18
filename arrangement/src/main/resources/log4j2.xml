@@ -14,7 +14,7 @@
 		<logger name="com.dao" level="trace" additivity="false">
 			<appender-ref ref="Console" />
 		</logger>
-		<Root level="trace">
+		<Root level="info">
 			<AppenderRef ref="Console" />
 		</Root>
 	</Loggers>
