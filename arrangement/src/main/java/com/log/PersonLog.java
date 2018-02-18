@@ -44,7 +44,6 @@ public class PersonLog {
 	 */
 	@Before("loginPointcut(registerInitDTO, errors, model)")
 	public void loginSuccess(RegisterInitDTO registerInitDTO, Errors errors, Model model) throws CloneNotSupportedException {
-		LOGGER.info("loginSuccess");
 		Log log = (Log) logPrototype.clone();
 		log.setLoginName(registerInitDTO.getLoginName());
 		log.setOperatedate(new Date());

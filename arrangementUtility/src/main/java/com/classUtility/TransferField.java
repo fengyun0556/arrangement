@@ -3,9 +3,6 @@ package com.classUtility;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * class transfer
  * 
@@ -13,8 +10,6 @@ import org.apache.logging.log4j.Logger;
  * @since 2017年12月10日 上午9:25:13
  */
 public class TransferField {
-
-	public static final Logger LOGGER = LogManager.getLogger(TransferField.class);
 
 	private TransferField() {}
 	
