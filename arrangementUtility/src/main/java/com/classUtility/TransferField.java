@@ -19,7 +19,8 @@ public class TransferField {
 		if(transferField != null) {
 			return transferField;
 		}else {
-			return new TransferField();
+			transferField = new TransferField(); 
+			return transferField;
 		}
 	}
 	

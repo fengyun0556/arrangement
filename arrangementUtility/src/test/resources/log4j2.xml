@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <Configuration status="WARN">
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
@@ -12,7 +11,7 @@
 		</RollingFile>
 	</Appenders>
 	<Loggers>
-		<logger name="com.dao" level="debug" additivity="false">
+		<logger name="com.dao" level="trace" additivity="false">
 			<appender-ref ref="Console" />
 		</logger>
 		<Root level="info">
