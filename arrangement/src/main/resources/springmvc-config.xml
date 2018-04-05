@@ -15,7 +15,10 @@
 	<context:component-scan base-package="com.controller"/>
 	
 	<aop:aspectj-autoproxy/>
-	
+	<!-- 配置<mvc:default-servlet-handler />后，会在Spring MVC上下文中定义一个org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler，
+		它会像一个检查员，对进入DispatcherServlet的URL进行筛查，如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，
+		如果不是静态资源的请求，才由DispatcherServlet继续处理 -->
+	<mvc:default-servlet-handler/>
 	<!-- 设置配置方案 -->
 	<mvc:annotation-driven enable-matrix-variables="true">
 		<!-- 设置不使用默认的消息转换器 -->
